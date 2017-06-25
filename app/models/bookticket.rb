@@ -1,0 +1,2 @@
+class Bookticket < ApplicationRecord
+end
