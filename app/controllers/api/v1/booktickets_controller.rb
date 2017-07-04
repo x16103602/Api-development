@@ -3,20 +3,36 @@ class Api::V1::BookticketsController < ApplicationController
   before_action :set_bookticket, only: [:show, :update, :destroy]
   #protect_from_forgery with: :null_session
   # GET /booktickets
+  has_scope :identify
   def index
-    @booktickets = Bookticket.all
-
+    @booktickets = apply_scopes(Bookticket).all #Bookticket.all
     render json: @booktickets
+    #render xml: @booktickets 
+    #render json: @booktickets
   end
 
   # GET /booktickets/1
   def show
+    #respond_to do |format|
+      #format.json { render json: @bookticket }
+     # format.xml { render xml: @bookticket }
+    #end
     render json: @bookticket
   end
 
   # POST /booktickets
   def create
     @bookticket = Bookticket.new(bookticket_params)
+    
+    #respond_to do |format|
+     # if @bookticket.save
+      #  format.json { render json: @bookticket, status: :created }
+       # format.xml { render xml: @bookticket, status: :created }
+      #else
+       # format.json { render json: @bookticket.errors, status: :unprocessable_entity }
+        #format.xml { render xml: @bookticket.errors, status: :unprocessable_entity }
+      #end
+    #end
 
     if @bookticket.save
       render json: @bookticket, status: :created, location: @bookticket
