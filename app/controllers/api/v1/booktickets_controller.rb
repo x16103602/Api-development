@@ -10,6 +10,7 @@ class Api::V1::BookticketsController < ApplicationController
     #render xml: @booktickets 
     #render json: @booktickets
   end
+  
 
   # GET /booktickets/1
   def show
