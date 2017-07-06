@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  #get 'user/create'
+  match 'apitoken', to: 'user#apikey', via: [:get]
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :booktickets

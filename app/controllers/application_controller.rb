@@ -6,7 +6,7 @@ class ApplicationController < ActionController::API
   # Add a before_action to authenticate all requests.
   # Move this to subclassed controllers if you only
   # want to authenticate certain methods.
-  before_action :authenticate
+  before_action :authenticate, except: [:apikey] 
 
   protected
 
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::API
 
   def render_unauthorized(realm = "Application")
     self.headers["WWW-Authenticate"] = %(Token realm="#{realm.gsub(/"/, "")}")
-    render json: 'Bad credentials', status: :unauthorized
+    render json: 'Please use Athutentication to use this API, You can request for api keys from spkishore007@gmail.com', status: :unauthorized
   end
     
 end

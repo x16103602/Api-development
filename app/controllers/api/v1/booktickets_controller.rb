@@ -64,6 +64,6 @@ class Api::V1::BookticketsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def bookticket_params
-      params.require(:bookticket).permit(:name, :age, :aticket, :cticket, :tdate, :hour, :from, :to, :proof, :cost)
+      params.require(:bookticket).permit(:name, :age, :aticket, :cticket, :tdate, :hour, :from, :to, :proof, :cost, :tclass, :treturn)
     end
 end
