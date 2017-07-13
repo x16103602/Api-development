@@ -7,17 +7,11 @@ class Api::V1::BookticketsController < ApplicationController
   def index
     @booktickets = apply_scopes(Bookticket).all #Bookticket.all
     render json: @booktickets
-    #render xml: @booktickets 
-    #render json: @booktickets
   end
   
 
   # GET /booktickets/1
   def show
-    #respond_to do |format|
-      #format.json { render json: @bookticket }
-     # format.xml { render xml: @bookticket }
-    #end
     render json: @bookticket
   end
 
@@ -25,18 +19,8 @@ class Api::V1::BookticketsController < ApplicationController
   def create
     @bookticket = Bookticket.new(bookticket_params)
     
-    #respond_to do |format|
-     # if @bookticket.save
-      #  format.json { render json: @bookticket, status: :created }
-       # format.xml { render xml: @bookticket, status: :created }
-      #else
-       # format.json { render json: @bookticket.errors, status: :unprocessable_entity }
-        #format.xml { render xml: @bookticket.errors, status: :unprocessable_entity }
-      #end
-    #end
-
     if @bookticket.save
-      render json: @bookticket, status: :created, location: @bookticket
+      render json: @bookticket, status: :created #, location: @bookticket
     else
       render json: @bookticket.errors, status: :unprocessable_entity
     end
