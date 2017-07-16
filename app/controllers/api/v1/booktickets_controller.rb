@@ -4,6 +4,7 @@ class Api::V1::BookticketsController < ApplicationController
   #protect_from_forgery with: :null_session
   # GET /booktickets
   has_scope :identify
+  has_scope :name
   def index
     @booktickets = apply_scopes(Bookticket).all #Bookticket.all
     render json: @booktickets
